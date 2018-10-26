@@ -1,10 +1,11 @@
-import org.apache.commons.io.FileUtils;
+//import org.apache.commons.io.FileUtils;
 
 import java.io.*;
 import java.nio.channels.FileChannel;
-import java.nio.file.*;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Calendar;
 import java.util.Scanner;
 
 
@@ -122,7 +123,7 @@ public class Terminal {
         if (s.isDirectory()) {
             if (!d.exists())
                 d.mkdir();
-            FileUtils.copyDirectory(s, d); // download --> http://commons.apache.org/proper/commons-io/download_io.cgi
+//            FileUtils.copyDirectory(s, d); // download --> http://commons.apache.org/proper/commons-io/download_io.cgi
         }
         else{
             FileChannel sr = new FileInputStream(s).getChannel();
@@ -148,25 +149,94 @@ public class Terminal {
             return 0;
         File des = new File(path);
         if (des.isDirectory())
-            FileUtils.deleteDirectory(new File(path));
+            System.out.println("i have commented the actual line please fix me");
+//            FileUtils.deleteDirectory(new File(path));
         else
             des.delete();
 
         return 1;
     }
 
-    public static void main(String[] args) {
+    public void cat(String path) throws IOException {
+        BufferedReader fileContent = new BufferedReader(new FileReader(path));
+        String line ;
+        while((line = fileContent.readLine()) != null)
+        {
+            System.out.println(line);
+        }
+        fileContent.close();
+    }
+
+    public void more(String path)throws IOException {
+        BufferedReader fileContent = new BufferedReader(new FileReader(path));
+        int step = 10;
+        Scanner reader = new Scanner(System.in);
+
+        String line;
+        while((line = fileContent.readLine()) != null)
+        {
+            System.out.println(line);
+            if (step == 0){
+                System.out.println("how many lines do u want to read more");
+                step = reader.nextInt();
+            }
+            step --;
+        }
+    }
+
+    public void pwd() {
+        System.out.println(System.getProperty("user.dir"));
+    }
+
+    public void date(){
+        String timeStamp = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss").format(Calendar.getInstance().getTime());
+        System.out.println(timeStamp);
+    }
+
+    public void args(String command){
+        switch (command){
+            case "": return;
+            case "ClearScreen": System.out.println("Number of args is 0");break;
+            case "ShowDir": System.out.println("Number of args is 1:path");break;
+            case "ChangeDir": System.out.println("Number of args is 1:path");break;
+            case "ListCon": System.out.println("Number of args is 2:from , to");break;
+            case "Copy": System.out.println("Number of args is 2:from , to ");break;
+            case "MkDir": System.out.println("Number of args is 1: path");break;
+            case "RmvDir": System.out.println("Number of args is 1: path");break;
+            case "cat": System.out.println("Number of args is 1: path");break;
+            case "pwd": System.out.println("Number of args is 0");break;
+            case "args": System.out.println("Number of args is 1: command");break;
+            case "help": System.out.println("Number of args is 0");break;
+            default: break;
+
+        }
+    }
+
+    public void help (){
+        System.out.println("cls     : clears the screen ");
+        System.out.println("cd      : changes the directory of the Terminal ");
+        System.out.println("ls      : Displays all the files in the current Directory");
+        System.out.println("cp      : copy a file from one place to another ");
+        System.out.println("mkdir   : makes a new directory at a specific path ");
+        System.out.println("rmdir   : deletes a directory ");
+        System.out.println("cat     : shows the content of a file");
+        System.out.println("pwd     : displays current directory");
+        System.out.println("args    : List all command arguments");
+        System.out.println("help    : displays all commands with a breif description");
+    }
+
+
+
+
+
+    public static void main(String[] args) throws IOException {
         System.out.printf("\n");
-        Terminal obj = new Terminal();
-        try {
-            obj.ChangeDir("C:\\Users\\amr_x\\Desktop");
-            obj.Copy("know.txt", "new.txt");
+        Terminal terminal = new Terminal();
+//        terminal.ChangeDir("\"/home/sadat/Desktop/\"");
+//            obj.Copy("know.txt", "new.txt");
+//       System.setProperty("user.dir","\"/home/sadat/Desktop/\"");
+        terminal.help();
 
-        }
-
-        catch(IOException exp){
-            System.out.println("EXP");;
-        }
     }
 
 }
