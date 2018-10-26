@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="dacfe25e-1af7-4799-b4d4-edcfb90c6060" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OS/out/production/OS/Terminal.class" beforeDir="false" afterPath="$PROJECT_DIR$/OS/out/production/OS/Terminal.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/OS/src/Terminal.java" beforeDir="false" afterPath="$PROJECT_DIR$/OS/src/Terminal.java" afterDir="false" />
     </list>
@@ -48,12 +48,12 @@
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="301" />
+          <entry key="java" value="543" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="301" />
+          <entry key="JAVA" value="543" />
         </counts>
       </usages-collector>
     </session>
@@ -63,16 +63,14 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/OS/src/Terminal.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="245" column="22" lean-forward="true" selection-start-line="245" selection-start-column="22" selection-end-line="245" selection-end-column="22" />
+            <state relative-caret-position="269">
+              <caret line="248" column="16" selection-start-line="248" selection-start-column="16" selection-end-line="248" selection-end-column="16" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1974#1982#0" expanded="true" />
                 <element signature="e#2297#2305#0" expanded="true" />
                 <element signature="e#2813#2821#0" expanded="true" />
                 <element signature="e#3139#3147#0" expanded="true" />
-                <element signature="e#5750#5751#0" expanded="true" />
-                <element signature="e#5816#5817#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -137,7 +135,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540555465287" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1540557599971" />
     <property name="last_opened_file_path" value="$USER_HOME$/Downloads/commons-io-2.6/commons-io-2.6.jar!/" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
@@ -183,7 +181,7 @@
       <option name="presentableId" value="Default" />
       <updated>1540480749923</updated>
       <workItem from="1540480766540" duration="1256000" />
-      <workItem from="1540553010294" duration="2354000" />
+      <workItem from="1540553010294" duration="4476000" />
     </task>
     <servers />
   </component>
@@ -193,7 +191,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3610000" />
+    <option name="totallyTimeSpent" value="5732000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="744" extended-state="6" />
@@ -235,19 +233,29 @@
   <component name="VcsContentAnnotationSettings">
     <option name="myLimit" value="2678400000" />
   </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/OS/src/Terminal.java</url>
+          <line>24</line>
+          <properties />
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/OS/src/Terminal.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="245" column="22" lean-forward="true" selection-start-line="245" selection-start-column="22" selection-end-line="245" selection-end-column="22" />
+        <state relative-caret-position="269">
+          <caret line="248" column="16" selection-start-line="248" selection-start-column="16" selection-end-line="248" selection-end-column="16" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1974#1982#0" expanded="true" />
             <element signature="e#2297#2305#0" expanded="true" />
             <element signature="e#2813#2821#0" expanded="true" />
             <element signature="e#3139#3147#0" expanded="true" />
-            <element signature="e#5750#5751#0" expanded="true" />
-            <element signature="e#5816#5817#0" expanded="true" />
           </folding>
         </state>
       </provider>

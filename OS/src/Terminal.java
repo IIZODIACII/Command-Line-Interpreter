@@ -17,23 +17,16 @@ public class Terminal {
             System.out.println();
         }
     }
-    public int ShowDir(String path) throws IOException /* Should be caught when its called in the parser*/{
-            if (path.equals("")) {
-                System.out.print("Current Dir: ");
-                System.out.print(System.getProperty("user.dir"));
-                System.out.println();
-            }
-            else{
-                Writer file = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path), "utf-8"));
-                file.write(System.getProperty("user.dir"));
-                file.close();
-            }
-            return 1;
-    }
 
     public int ChangeDir(String path){
         if (path.equals("")){
             System.setProperty("user.dir",DefDir);
+        }
+        else if (path.equals("..")){
+            String temp = System.getProperty("user.dir");
+            int idx = temp.lastIndexOf("\\");
+            temp = temp.substring(0,idx);
+            System.setProperty("user.dir", temp);
         }
         else {
             File dir;
@@ -190,10 +183,19 @@ public class Terminal {
         }
     }
 
-    public void pwd() {
-        System.out.println(System.getProperty("user.dir"));
+    public int pwd(String path) throws IOException /* Should be caught when its called in the parser*/{
+        if (path.equals("")) {
+            System.out.print("Current Dir: ");
+            System.out.print(System.getProperty("user.dir"));
+            System.out.println();
+        }
+        else{
+            Writer file = new BufferedWriter(new OutputStreamWriter(new FileOutputStream(path), "utf-8"));
+            file.write(System.getProperty("user.dir"));
+            file.close();
+        }
+        return 1;
     }
-
     public void date(){
         String timeStamp = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss").format(Calendar.getInstance().getTime());
         System.out.println(timeStamp);
@@ -237,22 +239,14 @@ public class Terminal {
 
     public static void main(String[] args) throws IOException {
         System.out.printf("\n");
-        Terminal obj = new Terminal();
+        Terminal terminal = new Terminal();
 
-        obj.ShowDir("");
-        obj.ChangeDir("");
-        obj.Copy("", "");
-        obj.RmvDir("");
-        obj.MkDir("");
-        obj.ListCon("","");
-        obj.date();
-        obj.ClearScreen();
-        obj.args("ClearScreen");
-        //obj.cat("");
-        obj.pwd();
-        obj.help();
-        //obj.more("");
+        terminal.pwd("");
+        terminal.ChangeDir("..");
 
+        terminal.pwd("");
+        terminal.ChangeDir("OS");
+        terminal.pwd("");
     }
 
 }
