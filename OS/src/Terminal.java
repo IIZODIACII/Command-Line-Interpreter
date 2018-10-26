@@ -1,3 +1,5 @@
+import org.apache.commons.io.FileUtils;
+
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
@@ -16,7 +18,7 @@ public class Terminal {
         }
     }
     public int ShowDir(String path) throws IOException /* Should be caught when its called in the parser*/{
-            if (path == "") {
+            if (path.equals("")) {
                 System.out.print("Current Dir: ");
                 System.out.print(System.getProperty("user.dir"));
                 System.out.println();
@@ -30,7 +32,7 @@ public class Terminal {
     }
 
     public int ChangeDir(String path){
-        if (path == ""){
+        if (path.equals("")){
             System.setProperty("user.dir",DefDir);
         }
         else {
@@ -53,7 +55,7 @@ public class Terminal {
     public int ListCon(String from, String to)throws IOException /* Should be caught when its called in the parser*/{
         // If the excp. is caught it means that 2nd arg. is invalid
         // If returned 0 it means that the first arg. is invalid
-        if (from == "" && to == ""){
+        if (from.equals("") && to.equals("")){
             File obj = new File(System.getProperty("user.dir"));
             ArrayList<String> files = new ArrayList<String>(Arrays.asList(obj.list()));
 
@@ -62,7 +64,7 @@ public class Terminal {
             }
 
         }
-        else if (from == "" && to !="" ){
+        else if (from.equals("")&& to.equals("") == false ){
             File obj = new File(System.getProperty("user.dir"));
             ArrayList<String> files = new ArrayList<String>(Arrays.asList(obj.list()));
 
@@ -74,7 +76,7 @@ public class Terminal {
             out.close();
         }
 
-        else if (from != "" && to =="" ){
+        else if (from.equals("") == false && to.equals("") ){
             File obj = new File(from);
             if (!obj.exists())
                 return 0;
@@ -106,6 +108,12 @@ public class Terminal {
 
     public int Copy(String src, String des)throws IOException{
 
+        if (src.equals(""))
+            return 0;
+
+        if (des.equals(""))
+            return -1;
+
         if (!src.contains("\\"))
             src = System.getProperty("user.dir") + "\\" + src;
         if (!des.contains("\\"))
@@ -134,7 +142,7 @@ public class Terminal {
 
 
     public int MkDir(String path){
-        if(path == "")
+        if(path.equals(""))
             return 0;
 
         File f = new File(path);
@@ -143,12 +151,12 @@ public class Terminal {
     }
 
     public int RmvDir(String path) throws IOException{
-        if (path == "")
+        if (path.equals(""))
             return 0;
         File des = new File(path);
-        if (des.isDirectory())
-            System.out.println("i have commented the actual line please fix me");
+        if (des.isDirectory()) {
             FileUtils.deleteDirectory(new File(path));
+        }
         else
             des.delete();
 
@@ -229,11 +237,21 @@ public class Terminal {
 
     public static void main(String[] args) throws IOException {
         System.out.printf("\n");
-        Terminal terminal = new Terminal();
-//        terminal.ChangeDir("\"/home/sadat/Desktop/\"");
-//            obj.Copy("know.txt", "new.txt");
-//       System.setProperty("user.dir","\"/home/sadat/Desktop/\"");
-        terminal.help();
+        Terminal obj = new Terminal();
+
+        obj.ShowDir("");
+        obj.ChangeDir("");
+        obj.Copy("", "");
+        obj.RmvDir("");
+        obj.MkDir("");
+        obj.ListCon("","");
+        obj.date();
+        obj.ClearScreen();
+        obj.args("ClearScreen");
+        //obj.cat("");
+        obj.pwd();
+        obj.help();
+        //obj.more("");
 
     }
 
