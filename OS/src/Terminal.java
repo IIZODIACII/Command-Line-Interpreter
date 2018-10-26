@@ -1,5 +1,3 @@
-//import org.apache.commons.io.FileUtils;
-
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
@@ -123,7 +121,7 @@ public class Terminal {
         if (s.isDirectory()) {
             if (!d.exists())
                 d.mkdir();
-//            FileUtils.copyDirectory(s, d); // download --> http://commons.apache.org/proper/commons-io/download_io.cgi
+            FileUtils.copyDirectory(s, d); // download --> http://commons.apache.org/proper/commons-io/download_io.cgi
         }
         else{
             FileChannel sr = new FileInputStream(s).getChannel();
@@ -150,7 +148,7 @@ public class Terminal {
         File des = new File(path);
         if (des.isDirectory())
             System.out.println("i have commented the actual line please fix me");
-//            FileUtils.deleteDirectory(new File(path));
+            FileUtils.deleteDirectory(new File(path));
         else
             des.delete();
 
