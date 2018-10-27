@@ -148,21 +148,31 @@ public class Terminal {
         File des = new File(path);
         if (des.isDirectory())
             System.out.println("i have commented the actual line please fix me");
-            FileUtils.deleteDirectory(new File(path));
+//            FileUtils.deleteDirectory(new File(path));
         else
             des.delete();
 
         return 1;
     }
 
-    public void cat(String path) throws IOException {
-        BufferedReader fileContent = new BufferedReader(new FileReader(path));
-        String line ;
-        while((line = fileContent.readLine()) != null)
-        {
-            System.out.println(line);
-        }
-        fileContent.close();
+
+    //
+
+    public void cat(String path_1 , String path_2 , String path_3   ) throws IOException {
+      String FileContent = getFileContent(path_1);
+      FileContent += "\n" + getFileContent(path_2);
+
+    }
+
+    public String getFileContent(String path) throws FileNotFoundException {
+        Scanner scanner = new Scanner( new File(path) );
+        String text = scanner.useDelimiter("\\A").next();
+        scanner.close();
+        return text;
+    }
+
+    public void writeToFile(String path) throws IOException {
+
     }
 
     public void more(String path)throws IOException {
