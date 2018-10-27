@@ -16,17 +16,17 @@ command=Input.nextLine();
 	for(int i=0;i<par.cmd.size();i++){
 if(par.cmd.elementAt(i).equals("clear")){
 	
-	if(par.args.elementAt(i).elementAt(0).equals(""))ter.ClearScreen();
+	if(par.args.elementAt(i).elementAt(0).equals(""))ter.Clear();
 	else System.out.println("It takes no args");
 }		
-else if(par.cmd.elementAt(i).equals("cd"))ter.ChangeDir(par.args.elementAt(i).elementAt(0));		
+else if(par.cmd.elementAt(i).equals("cd"))ter.CD(par.args.elementAt(i).elementAt(0));
 else if(par.cmd.elementAt(i).equals("mkdir")){
 if(ter.MkDir(par.args.elementAt(i).elementAt(0))==0)System.out.println("Please Enter A directory");	
 	
 }		
 else if(par.cmd.elementAt(i).equals("rmdir")){
 try {
-	if(ter.RmvDir(par.args.elementAt(i).elementAt(0))==0)System.out.println("Please Enter A directory");
+	if(ter.RmDir(par.args.elementAt(i).elementAt(0))==0)System.out.println("Please Enter A directory");
 } catch (IOException e) {
 	e.printStackTrace();
 }	
@@ -35,7 +35,7 @@ try {
 }		
 else if(par.cmd.elementAt(i).equals("cat")){
 	try{
-		ter.cat(par.args.elementAt(i).elementAt(0));
+		ter.Cat(par.args.elementAt(i).elementAt(0));
 	}
 	catch(IOException e){
 		e.printStackTrace();
@@ -49,13 +49,13 @@ else if(par.cmd.elementAt(i).equals("more")){
 		e.printStackTrace();
 	}
 }
-else if(par.cmd.elementAt(i).equals("help"))ter.help();
-else if(par.cmd.elementAt(i).equals("args"))ter.args(par.args.elementAt(i).elementAt(0));
-else if(par.cmd.elementAt(i).equals("date"))ter.date();
+else if(par.cmd.elementAt(i).equals("help"))ter.Help();
+else if(par.cmd.elementAt(i).equals("args"))ter.Args(par.args.elementAt(i).elementAt(0));
+else if(par.cmd.elementAt(i).equals("date"))ter.Date();
 else if(par.cmd.elementAt(i).equals("cp")){
 	try{
 		int size=par.args.elementAt(i).size();
-		if(ter.Copy(par.args.elementAt(i).elementAt(0),
+		if(ter.CP(par.args.elementAt(i).elementAt(0),
 				size>1?par.args.elementAt(i).elementAt(1):"")!=1)
 			System.out.println("Enter a valid Input");
 		
