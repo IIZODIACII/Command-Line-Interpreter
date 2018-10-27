@@ -36,7 +36,7 @@ String []sp1=Input.split("\\|");//the commands will be given like cd (1 arg)|pwd
         else v.addElement(sp2[i]);
         
         if(v.size()==0)v.addElement("");
-        if(red.size()==0)red.addElement("");
+        while(red.size()<cmd.size())red.addElement("");
         
         args.addElement(v);
 
