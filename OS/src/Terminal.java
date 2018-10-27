@@ -1,4 +1,5 @@
 import org.apache.commons.io.FileUtils;
+
 import java.io.*;
 import java.nio.channels.FileChannel;
 import java.text.SimpleDateFormat;
@@ -215,7 +216,6 @@ public class Terminal {
     public String cat(String path_1,String path_2,String path_3) throws IOException {
        String fileContent = readFileContent(path_1) + readFileContent(path_2);
        writeToFile(path_3,fileContent);
-       System.out.println(fileContent);
        return readFileContent(path_3);
     }
 
@@ -240,12 +240,11 @@ public class Terminal {
 
     public String Date() {
         String timeStamp = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss").format(Calendar.getInstance().getTime());
-        System.out.println(timeStamp);
         return timeStamp;
     }
 
     public String Args(String command) {
-      String output = "" ;
+      String output = "Enter A Command" ;
         switch (command) {
             case "":
                 return output;
@@ -271,7 +270,7 @@ public class Terminal {
               output = "Number of args is 1: path";
                 break;
             case "cat":
-              output = "Number of args is 1: path";
+              output = "Number of args is 3: path1 , path2 , path3 ";
                 break;
             case "pwd":
               output = "Number of args is 0";
@@ -286,13 +285,11 @@ public class Terminal {
                 break;
 
         }
-        System.out.println(output);
         return output;
     }
 
     public String Help() {
-        String output = ("cls     : clears the screen\ncd      : changes the directory of the Terminal\nls      : Displays all the files in the current Directory\ncp      : copy a file from one place to another\nmkdir   : makes a new directory at a specific path\nrmdir   : deletes a directory\ncat     : shows the content of a file\npwd     : displays current directory\nargs    : List all command arguments\nhelp    : displays all commands with a breif description");
-        System.out.println(output);
+        String output = ("cls     : clears the screen\ncd      : changes the directory of the Terminal\nls      : Displays all the files in the current Directory\ncp      : copy a file from one place to another\nmkdir   : makes a new directory at a specific path\nrmdir   : deletes a directory\ncat     : merges two files into one\npwd     : displays current directory\nargs    : List all command arguments\nhelp    : displays all commands with a breif description");
         return output;
     }
 
@@ -304,7 +301,8 @@ public class Terminal {
     }
 
     public void writeToFile(String filePath,String data) throws  IOException{
-        PrintWriter out = new PrintWriter(filePath);
+        if(filePath.equals("")){System.out.println("No path");return;}
+    	PrintWriter out = new PrintWriter(filePath);
         out.println(data);
         out.close();
     }
@@ -314,15 +312,7 @@ public class Terminal {
     }
 
     public static void main(String[] args) {
-        try {
-            Terminal obj = new Terminal();
-//            obj.CD("..");
-//            obj.Mv("d", "n");
-          System.out.println( obj.cat("/home/sadat/Desktop/1.txt","/home/sadat/Desktop/2.txt","/home/sadat/Desktop/3.txt") ) ;
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
+       
 
     }
 }
