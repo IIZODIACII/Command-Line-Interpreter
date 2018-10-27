@@ -77,6 +77,21 @@ try{
 catch(IOException e){e.printStackTrace();}
 	
 }
+else if(par.cmd.elementAt(i).equals("rm")){
+	try{
+		if(ter.Rm(par.args.elementAt(i).elementAt(0))!=-1)System.out.println("Enter a valid Input");
+	}
+	catch(IOException e){e.printStackTrace();}
+	
+}
+	else if(par.cmd.elementAt(i).equals("mv")){
+		try{
+int size=par.args.elementAt(i).size();
+if(ter.Mv(par.args.elementAt(i).elementAt(0),
+size>1?par.args.elementAt(i).elementAt(1):""  )!=1)System.out.println("Enter a valid Input");
+		}
+		catch(IOException e){e.printStackTrace();}
+	}
 if(!par.red.elementAt(i).equals(""))
 	try {
 		ter.writeToFile(par.red.elementAt(i),output);
@@ -96,4 +111,3 @@ else System.out.println(output);
 	}
 
 }
-
