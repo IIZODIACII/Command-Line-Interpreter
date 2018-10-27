@@ -204,11 +204,9 @@ public class Terminal {
         File to = new File(des);
 
         if (from.isDirectory() && to.isDirectory())
-            System.out.println("this line is commented");
             FileUtils.moveDirectoryToDirectory(from, to, !to.exists());
 
         else
-            System.out.println("this line is commented");
           FileUtils.moveToDirectory(from, to, !to.exists());
 
         return 1;
