@@ -6,7 +6,8 @@ public Vector<String>cmd;
 public Vector<Vector<String> >args;
 public Vector<String>red;
 public boolean Check(String cmd){//to check whether the current command is valid or not
-String []commands={"clear","cd","ls","cp","mv","rm","mkdir","rmdir","cat","more","pwd","exit"};//didn't complete the commands yet :)	
+String []commands={
+"clear","cd","ls","cp","mv","rm","mkdir","rmdir","cat","more","pwd","exit","help","args","date"};//didn't complete the commands yet :)	
 	for(String i:commands)if(i.equals(cmd))return true;
 	
 return false;	
@@ -32,7 +33,7 @@ String []sp1=Input.split("\\|");//the commands will be given like cd (1 arg)|pwd
         cmd.addElement(sp2[0]);
 
         for(int j=1;j<sp2.length;j++)
-        if(sp2[j].equals(">")||sp2[j].equals(">>")){red.addElement(sp2[j+1]);break;}
+        if(sp2[j].equals(">")||sp2[j].equals(">>")){red.addElement(j+1<sp2.length?sp2[j+1]:"");break;}
         else v.addElement(sp2[i]);
         
         if(v.size()==0)v.addElement("");
