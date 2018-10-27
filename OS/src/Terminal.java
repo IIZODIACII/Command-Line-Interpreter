@@ -204,24 +204,26 @@ public class Terminal {
         File to = new File(des);
 
         if (from.isDirectory() && to.isDirectory())
+            System.out.println("this line is commented");
             FileUtils.moveDirectoryToDirectory(from, to, !to.exists());
 
         else
-            FileUtils.moveToDirectory(from, to, !to.exists());
+            System.out.println("this line is commented");
+          FileUtils.moveToDirectory(from, to, !to.exists());
 
         return 1;
     }
 
-    public void Cat(String path) throws IOException {
-        BufferedReader fileContent = new BufferedReader(new FileReader(path));
-        String line;
-        while ((line = fileContent.readLine()) != null) {
-            System.out.println(line);
-        }
-        fileContent.close();
+    public String cat(String path_1,String path_2,String path_3) throws IOException {
+       String fileContent = readFileContent(path_1) + readFileContent(path_2);
+       writeToFile(path_3,fileContent);
+       System.out.println(fileContent);
+       return readFileContent(path_3);
     }
 
-    public void more(String path) throws IOException {
+
+
+    public String more(String path) throws IOException {
         BufferedReader fileContent = new BufferedReader(new FileReader(path));
         int step = 10;
         Scanner reader = new Scanner(System.in);
@@ -235,67 +237,78 @@ public class Terminal {
             }
             step--;
         }
+        return readFileContent(path);
     }
 
-    public void Date() {
+    public String Date() {
         String timeStamp = new SimpleDateFormat("yyyy:MM:dd HH:mm:ss").format(Calendar.getInstance().getTime());
         System.out.println(timeStamp);
+        return timeStamp;
     }
 
-    public void Args(String command) {
+    public String Args(String command) {
+      String output = "" ;
         switch (command) {
             case "":
-                return;
-            case "ClearScreen":
-                System.out.println("Number of args is 0");
+                return output;
+            case "cls":
+                output = "Number of args is 0";
                 break;
             case "ShowDir":
-                System.out.println("Number of args is 1:path");
+              output = "Number of args is 1:path";
                 break;
             case "ChangeDir":
-                System.out.println("Number of args is 1:path");
+              output = "Number of args is 1:path";
                 break;
             case "ListCon":
-                System.out.println("Number of args is 2:from , to");
+              output = "Number of args is 2:from , to";
                 break;
             case "Copy":
-                System.out.println("Number of args is 2:from , to ");
+              output = "Number of args is 2:from , to ";
                 break;
             case "MkDir":
-                System.out.println("Number of args is 1: path");
+              output = "Number of args is 1: path";
                 break;
             case "RmvDir":
-                System.out.println("Number of args is 1: path");
+              output = "Number of args is 1: path";
                 break;
             case "cat":
-                System.out.println("Number of args is 1: path");
+              output = "Number of args is 1: path";
                 break;
             case "pwd":
-                System.out.println("Number of args is 0");
+              output = "Number of args is 0";
                 break;
             case "args":
-                System.out.println("Number of args is 1: command");
+              output = "Number of args is 1: command";
                 break;
             case "help":
-                System.out.println("Number of args is 0");
+              output = "Number of args is 0";
                 break;
             default:
                 break;
 
         }
+        System.out.println(output);
+        return output;
     }
 
-    public void Help() {
-        System.out.println("cls     : clears the screen ");
-        System.out.println("cd      : changes the directory of the Terminal ");
-        System.out.println("ls      : Displays all the files in the current Directory");
-        System.out.println("cp      : copy a file from one place to another ");
-        System.out.println("mkdir   : makes a new directory at a specific path ");
-        System.out.println("rmdir   : deletes a directory ");
-        System.out.println("cat     : shows the content of a file");
-        System.out.println("pwd     : displays current directory");
-        System.out.println("args    : List all command arguments");
-        System.out.println("help    : displays all commands with a breif description");
+    public String Help() {
+        String output = ("cls     : clears the screen\ncd      : changes the directory of the Terminal\nls      : Displays all the files in the current Directory\ncp      : copy a file from one place to another\nmkdir   : makes a new directory at a specific path\nrmdir   : deletes a directory\ncat     : shows the content of a file\npwd     : displays current directory\nargs    : List all command arguments\nhelp    : displays all commands with a breif description");
+        System.out.println(output);
+        return output;
+    }
+
+    public String readFileContent (String path) throws IOException {
+        Scanner scanner = new Scanner( new File(path), "UTF-8" );
+        String fileContent = scanner.useDelimiter("\\A").next();
+        scanner.close(); // Put this call in a finally block
+        return fileContent;
+    }
+
+    public void writeToFile(String filePath,String data) throws  IOException{
+        PrintWriter out = new PrintWriter(filePath);
+        out.println(data);
+        out.close();
     }
 
     public void Exit() {
@@ -305,8 +318,9 @@ public class Terminal {
     public static void main(String[] args) {
         try {
             Terminal obj = new Terminal();
-            obj.CD("..");
-            obj.Mv("d", "n");
+//            obj.CD("..");
+//            obj.Mv("d", "n");
+          System.out.println( obj.cat("/home/sadat/Desktop/1.txt","/home/sadat/Desktop/2.txt","/home/sadat/Desktop/3.txt") ) ;
         }
         catch (IOException e) {
             e.printStackTrace();
