@@ -178,7 +178,7 @@ public class Terminal {
         return 1;
     }
 
-    public int pwd(String path) throws IOException {
+    public void pwd(String path) throws IOException {
         if (path.equals("")) {
             System.out.print("Current Dir: ");
             System.out.print(System.getProperty("user.dir"));
@@ -188,7 +188,7 @@ public class Terminal {
             file.write(System.getProperty("user.dir"));
             file.close();
         }
-        return 1;
+        
     }
 
     public int Mv(String src, String des) throws IOException {
